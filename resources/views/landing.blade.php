@@ -2,10 +2,10 @@
 <a href="{{ route('restaurants.index') }}">See more if</a>
 <ul>
     <li>
-        <a href="#">Sign in</a>
+        <a href="{{ route('login') }}">Sign in</a>
     </li>
     <li>
-        <a href="#">Sign up</a>
+        <a href="{{ route('signup') }}">Sign up</a>
     </li>
 </ul>
 

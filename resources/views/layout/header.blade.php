@@ -18,7 +18,7 @@
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
                     <span>
-                                <span class="account-user-name">Admin</span>
+                                <span class="account-user-name">{{ session()->get('name') }}</span>
                                 <span class="account-position">------</span>
                             </span>
                 </a>
@@ -34,7 +34,7 @@
                     </a>
 
                     <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                    <a href="{{ route('logout') }}" class="dropdown-item notify-item">
                         <i class="mdi mdi-logout mr-1"></i>
                         <span>Logout</span>
                     </a>

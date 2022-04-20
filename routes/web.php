@@ -13,10 +13,13 @@ Route::get('/', function () {
     return view('landing');
 });
 Route::get('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/login', [AuthController::class, 'processLogin'])->name('process_login');
+Route::post('/login', [AuthController::class, 'processLogin'])->name('process_login');
+Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
+Route::post('/signup', [AuthController::class, 'processSignup'])->name('process_signup');
 Route::group([
     'middleware' => CheckLoginMiddleware::class
 ], function () {
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::group(['prefix' => 'restaurants', 'as' => 'restaurants.'], function() {
         Route::get('/', [RestaurantController::class, 'index'])->name('index');
         Route::get('/create', [RestaurantController::class, 'create'])->name('create');

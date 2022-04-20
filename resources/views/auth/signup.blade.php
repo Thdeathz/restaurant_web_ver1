@@ -1,5 +1,16 @@
 @extends('layout.signup')
 @section('signup_form')
+    @if ($errors->any())
+        <div class="card-header">
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+    @endif
     <form method="post" action="{{ route('process_signup') }}">
         @csrf
         <div class="form-group">
@@ -27,7 +38,7 @@
         <div class="form-group">
             <label for="password">Confirm password</label>
             <div class="input-group input-group-merge">
-                <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                <input type="password" name="confirm_password" id="password" class="form-control" placeholder="Enter your password">
                 <div class="input-group-append" data-password="false">
 
                 </div>
