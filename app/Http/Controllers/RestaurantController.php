@@ -16,10 +16,11 @@ class RestaurantController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('q');
+
         $data = Restaurant::query()
             ->where('name', 'like', '%' . $search . '%')
             ->paginate(8);
-        //$data->appends(['q' => $search]);
+        $data->appends(['q' => $search]);
 
 
         return view('restaurants.index', [
