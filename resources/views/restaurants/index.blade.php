@@ -32,6 +32,21 @@
             <div class="col-sm-4">
                 <a href="{{ route('restaurants.create') }}" class="btn btn-success btn-rounded mb-3"><i class="mdi mdi-plus"></i> Thêm nhà hàng</a>
             </div>
+            <div class="col-sm-8">
+                <div class="text-sm-right">
+                    <div class="app-search dropdown">
+                        <form>
+                            <div class="input-group">
+                                <input type="search" name="q" class="form-control" value="{{ $search }}" placeholder="Search...">
+                                <span class="mdi mdi-magnify search-icon"></span>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="submit">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="row">
@@ -39,7 +54,7 @@
             <div class="col-md-4 col-xl-4">
                 <!-- project card -->
                 <div class="card d-block">
-                    <img class="card-img-top" src="{{ asset('storage/images/' . $each->image) }}" alt="A wonderfull restaurant">
+                    <img class="card-img-top" src="{{ asset('storage/images/' . $each->image) }}" style="max-height: 200px;" alt="A wonderfull restaurant">
                     <div class="card-body">
                         <div class="dropdown card-widgets">
                             <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
@@ -62,7 +77,7 @@
                         <p class="text-muted font-13 mb-3">
                             {{ $each->address }}
                             <br>
-                            <a href="javascript:void(0);" class="font-weight-bold text-muted">view more</a>
+                            <a href="{{ route('restaurants.show', $each) }}" class="font-weight-bold text-muted font-15">...Xem chi tiết</a>
                         </p>
 
                         <p class="mb-1">

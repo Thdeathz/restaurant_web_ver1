@@ -28,8 +28,8 @@
                 <a class="nav-link dropdown-toggle nav-user arrow-none mr-0" data-toggle="dropdown" id="topbar-userdrop" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false">
                     <span>
-                                <span class="account-user-name">Dominic Keller</span>
-                                <span class="account-position">Founder</span>
+                                <span class="account-user-name">Admin</span>
+                                <span class="account-position">------</span>
                             </span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-animated topbar-dropdown-menu profile-dropdown" aria-labelledby="topbar-userdrop">

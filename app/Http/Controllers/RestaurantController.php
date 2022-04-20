@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateRestaurantRequest;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
@@ -22,6 +23,7 @@ class RestaurantController extends Controller
             ->paginate(6);
         $data->appends(['q' => $search]);
 
+        Session::put('tasks_url', $request->fullUrl());
 
         return view('restaurants.index', [
             'data' => $data,
@@ -48,18 +50,27 @@ class RestaurantController extends Controller
         $arr = $request->validated();
         $arr['image'] = $name;
         Restaurant::create($arr);
+
+        if(session('tasks_url'))
+        {
+            return redirect(session('tasks_url'));
+        }
+
         return redirect()->route('restaurants.index');
     }
 
 
     public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.show', [
+            'each' => $restaurant,
+        ]);
     }
 
 
     public function edit(Restaurant $restaurant)
     {
+
         return view('restaurants.edit', [
             'each' => $restaurant,
         ]);
@@ -89,6 +100,11 @@ class RestaurantController extends Controller
         );
         $arr['image'] = $name;
         $restaurant->update($arr);
+
+        if(session('tasks_url'))
+        {
+            return redirect(session('tasks_url'));
+        }
 
         return redirect()->route('restaurants.index');
     }

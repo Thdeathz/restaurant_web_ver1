@@ -28,4 +28,5 @@ Route::group(['prefix' => 'restaurants', 'as' => 'restaurants.'], function() {
     Route::delete('/destroy/{restaurant}', [RestaurantController::class, 'destroy'])->name('destroy');
     Route::get('/edit/{restaurant}', [RestaurantController::class, 'edit'])->name('edit');
     Route::put('/edit/{restaurant}', [RestaurantController::class, 'update'])->name('update');
+    Route::get('/show/{restaurant}', [RestaurantController::class, 'show'])->name('show');
 });
