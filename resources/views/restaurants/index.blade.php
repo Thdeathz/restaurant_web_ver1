@@ -47,7 +47,7 @@
             <div class="col-md-4 col-xl-4">
                 <!-- project card -->
                 <div class="card d-block">
-                    <img class="card-img-top" src="{{ asset(public_path() . '/storage/images' . $each->image) }}" style="max-height: 200px;" alt="A wonderfull restaurant">
+                    <img class="card-img-top" src="{{ asset(public_path() . '/storage/images/' . $each->image) }}" style="max-height: 200px;" alt="A wonderfull restaurant">
                     <div class="card-body">
                         <div class="dropdown card-widgets">
                             <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
