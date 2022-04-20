@@ -1,5 +1,6 @@
 <?php
 
+use RealRashid\SweetAlert\Facades\Alert;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RestaurantController;
 use App\Http\Middleware\CheckLoginMiddleware;

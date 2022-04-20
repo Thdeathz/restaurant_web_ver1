@@ -1,17 +1,7 @@
 @extends('layout.master')
 @section('content')
     <div class="container-fluid">
-        @if ($errors->any())
-            <div class="card-header">
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-        @endif
+        @include('sweetalert::alert')
         <!-- start page title -->
         <div class="row">
             <div class="col-12">

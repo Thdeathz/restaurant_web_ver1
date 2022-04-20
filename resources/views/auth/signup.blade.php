@@ -1,16 +1,6 @@
 @extends('layout.signup')
 @section('signup_form')
-    @if ($errors->any())
-        <div class="card-header">
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('sweetalert::alert')
     <form method="post" action="{{ route('process_signup') }}">
         @csrf
         <div class="form-group">

@@ -1,5 +1,6 @@
 @extends('layout.login')
 @section('login_form')
+    @include('alert')
     <form method="post" action="{{ route('process_login') }}">
         @csrf
         <div class="form-group">

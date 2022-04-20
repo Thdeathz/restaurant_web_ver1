@@ -24,7 +24,7 @@
                         <!-- end card -->
                         <div class="row mt-1">
                             <div class="col-12 text-center">
-                                <p class="text-muted">Don't have an account? <a href="{{ route('signup') }}" class="text-muted ml-1"><b>Sign Up</b></a></p>
+                                <p class="text-muted">Chưa đăng ký tài khoản? <a href="{{ route('signup') }}" class="text-muted ml-1"><b>Đăng ký</b></a></p>
                             </div>
                         </div>
                     </div>

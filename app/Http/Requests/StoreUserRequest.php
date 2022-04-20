@@ -32,12 +32,28 @@ class StoreUserRequest extends FormRequest
                 'bail',
                 'required',
                 'string',
+                'unique:App\Models\User,email'
             ],
 
             'password' => [
                 'bail',
                 'required',
             ],
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'required' => ':attribute còn trống',
+            'unique' => ':attribute đã được dùng',
+        ];
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'password' => 'Mật khẩu',
         ];
     }
 }
