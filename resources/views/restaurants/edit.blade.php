@@ -28,7 +28,7 @@
                 Ảnh
                 <input type="file" name="image">
                 <br>
-                <img class="img-fluid w-100" src="{{ public_path() . '/' . $each->image }}" alt="A image">
+                <img class="img-fluid w-15" src="{{ asset('storage/images/' . $each->image) }}" alt="A image">
                 <br>
                 Mô tả:
                 <textarea name="description">{{ $each->description }}</textarea>

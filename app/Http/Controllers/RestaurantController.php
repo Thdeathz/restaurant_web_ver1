@@ -38,21 +38,13 @@ class RestaurantController extends Controller
 
     public function store(StoreRestaurantRequest $request)
     {
-//        if($request->file('image') !== null)
-//        {
-//            $path = Storage::disk('public')->putFile('images', $request->file('image'));
-//        }
-//        else {
-//            $path = null;
-//        }
-//        $arr = $request->validated();
-//        $arr['image'] = $path;
-//
-//        Restaurant::create($arr);
-        $size = $request->file('image')->getSize();
-        $name = $request->file('image')->getClientOriginalName();
-        $request->file('image')->storeAs('public/images', $name);
-
+        if($request->file('image') !== null)
+        {
+            $name = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images', $name);
+        }else {
+            $name = null;
+        }
         $arr = $request->validated();
         $arr['image'] = $name;
         Restaurant::create($arr);
@@ -77,22 +69,25 @@ class RestaurantController extends Controller
     public function update(Request $request, Restaurant $restaurant)
     {
         $each = $restaurant->getAttributes();
-        $destination = public_path(). '/' . $each['image'];
+        $destination = 'storage/images/' . $each['image'];
 
-        if(File::exists($destination))
+        if($request->file('image') !== null)
         {
-            File::delete($destination);
-            $path = Storage::disk('public')->putFile('images', $request->file('image'));
-        }
-        else {
-            $path = null;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $name = time() . '_' . $request->file('image')->getClientOriginalName();
+            $request->file('image')->storeAs('public/images', $name);
+        }else {
+            $name = $destination;
         }
 
         $arr = $request->except(
             '_token',
                 '_method',
         );
-        $arr['image'] = $path;
+        $arr['image'] = $name;
         $restaurant->update($arr);
 
         return redirect()->route('restaurants.index');
@@ -101,8 +96,14 @@ class RestaurantController extends Controller
 
     public function destroy(Restaurant $restaurant)
     {
+        $each = $restaurant->getAttributes();
+        $destination = 'storage/images/' . $each['image'];
+        if(File::exists($destination))
+        {
+            File::delete($destination);
+        }
         $restaurant->delete();
 
-        return redirect()->route('restaurants.index');
+        return redirect()->back();
     }
 }
