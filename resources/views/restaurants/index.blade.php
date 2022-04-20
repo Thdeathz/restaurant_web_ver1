@@ -75,7 +75,7 @@
 
                         <p class="mb-1">
                             <span class="pr-2 text-nowrap mb-2 d-inline-block">
-                                <b>21</b> $
+                                <b>{{ $each->price }}</b> $
                             </span>
                         </p>
                     </div>
