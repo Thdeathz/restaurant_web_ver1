@@ -21,11 +21,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('landing');
 });
-Route::group(['prefix' => 'restaurants', 'as' => 'restaurants.'], function() {
-    Route::get('/', [RestaurantController::class, 'index'])->name('index');
-    Route::get('/create', [RestaurantController::class, 'create'])->name('create');
-    Route::post('/create', [RestaurantController::class, 'store'])->name('store');
-    Route::delete('/destroy/{restaurant}', [RestaurantController::class, 'destroy'])->name('destroy');
-    Route::get('/edit/{restaurant}', [RestaurantController::class, 'edit'])->name('edit');
-    Route::put('/edit/{restaurant}', [RestaurantController::class, 'update'])->name('update');
-});
+
+Route::get('/restaurants', [RestaurantController::class, 'restaurants.index'])->name('index');
+Route::get('/restaurants/create', [RestaurantController::class, 'restaurants.create'])->name('create');
+Route::post('/restaurants/create', [RestaurantController::class, 'restaurants.store'])->name('store');
+Route::delete('/restaurants/destroy/{restaurant}', [RestaurantController::class, 'restaurants.destroy'])->name('destroy');
+Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class, 'restaurants.edit'])->name('edit');
+Route::put('/restaurants/edit/{restaurant}', [RestaurantController::class, 'restaurants.update'])->name('update');
