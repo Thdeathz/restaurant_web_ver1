@@ -91,13 +91,14 @@ class RestaurantController extends Controller
             $name = time() . '_' . $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public/images', $name);
         }else {
-            $name = $destination;
+            $name = $each['image'];
         }
 
         $arr = $request->except(
             '_token',
                 '_method',
         );
+
         $arr['image'] = $name;
         $restaurant->update($arr);
 

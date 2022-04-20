@@ -7,9 +7,7 @@
             <div class="page-title-box">
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">eCommerce</a></li>
-                        <li class="breadcrumb-item active">Product Details</li>
+                        <li class="breadcrumb-item"><a href="{{ session('tasks_url') }}"><---Quay lại</a></li>
                     </ol>
                 </div>
                 <h4 class="page-title">Thông tin chi tiết</h4>
