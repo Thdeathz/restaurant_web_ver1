@@ -18,16 +18,9 @@
 
 <div class="container-fluid">
     <div class="wrapper">
-        @include('layout.sidebar')
+{{--        @include('layout.sidebar')--}}
         <div class="content-page">
             <div class="content">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="page-title-box">
-                            <h4 class="page-title">Restaurant</h4>
-                        </div>
-                    </div>
-                </div>
                 @yield('content')
             </div>
             @include('layout.footer')

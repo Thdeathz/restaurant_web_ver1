@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('content')
-    <div class="card">
+    <div class="container-fluid">
         @if ($errors->any())
             <div class="card-header">
                 <div class="alert alert-danger">
@@ -12,50 +12,73 @@
                 </div>
             </div>
         @endif
-        <div class="card-body">
-            <a class="btn btn-success" href="{{ route('restaurants.create') }}">
-                Thêm
-            </a>
-            <form class="float-right form-group form-inline">
-                <label class="mr-2">Search:</label>
-                <input type="search" name="q" value="{{ $search }}" class="form-control">
-            </form>
-            <div class="container-fluid pt-5">
-                <div class="row px-xl-5 pb-3">
-                    @foreach($data as $each)
-                    <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Hyper</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Apps</a></li>
+                            <li class="breadcrumb-item active">Projects</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Nhà hàng</h4>
+                </div>
+            </div>
+        </div>
 
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                                <img class="img-fluid w-100" src="{{ asset('storage/images/' . $each->image) }}" alt="A image">
-                            </div>
-                            <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">{{ $each->name }}</h6>
-                                <div class="d-flex justify-content-center">
-                                    <h6>${{ $each->price }}</h6><h6 class="text-muted ml-2"></h6>
-                                </div>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark p-0">Chi tiết</a>
-                                <a href="{{ route('restaurants.edit', $each) }}" class="btn btn-sm text-dark p-0">Chỉnh sửa</a>
-                            </div>
-                            <div class="d-flex justify-content-sm-around bg-light border">
+        <div class="row mb-2">
+            <div class="col-sm-4">
+                <a href="{{ route('restaurants.create') }}" class="btn btn-success btn-rounded mb-3"><i class="mdi mdi-plus"></i> Thêm nhà hàng</a>
+            </div>
+        </div>
+
+        <div class="row">
+            @foreach($data as $each)
+            <div class="col-md-4 col-xl-4">
+                <!-- project card -->
+                <div class="card d-block">
+                    <img class="card-img-top" src="{{ asset('storage/images/' . $each->image) }}" alt="A wonderfull restaurant">
+                    <div class="card-body">
+                        <div class="dropdown card-widgets">
+                            <a href="#" class="dropdown-toggle arrow-none" data-toggle="dropdown" aria-expanded="false">
+                                <i class="dripicons-dots-3"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right" style="">
+                                <a href="{{ route('restaurants.edit', $each) }}" class="dropdown-item"><i class="mdi mdi-pencil mr-1"></i>Chỉnh sửa</a>
                                 <form action="{{ route('restaurants.destroy', $each) }}" method="post">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="bottom" title="Delete">X</button>
+                                    <button class="dropdown-item" type="submit"><i class="mdi mdi-delete mr-1"></i>Xóa</button>
                                 </form>
                             </div>
                         </div>
+
+                        <h4 class="mt-0">
+                            {{ $each->name }}
+                        </h4>
+
+                        <p class="text-muted font-13 mb-3">
+                            {{ $each->address }}
+                            <br>
+                            <a href="javascript:void(0);" class="font-weight-bold text-muted">view more</a>
+                        </p>
+
+                        <p class="mb-1">
+                            <span class="pr-2 text-nowrap mb-2 d-inline-block">
+                                <b>21</b> $
+                            </span>
+                        </p>
                     </div>
-                    @endforeach
                 </div>
             </div>
-            <nav>
-                <ul class="pagination pagination-rounded mb-0">
-                    {{ $data->links() }}
-                </ul>
-            </nav>
+            @endforeach
         </div>
+        <nav>
+            <ul class="pagination pagination-rounded mb-0">
+                {{ $data->links() }}
+            </ul>
+        </nav>
     </div>
 @endsection

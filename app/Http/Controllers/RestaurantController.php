@@ -19,7 +19,7 @@ class RestaurantController extends Controller
 
         $data = Restaurant::query()
             ->where('name', 'like', '%' . $search . '%')
-            ->paginate(8);
+            ->paginate(6);
         $data->appends(['q' => $search]);
 
 
