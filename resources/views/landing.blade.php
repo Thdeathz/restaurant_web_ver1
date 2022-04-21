@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,10 +10,9 @@
     <!-- App favicon -->
     <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/app-creative.min.css') }}" rel="stylesheet" type="text/css" id="light-style" />
-
 </head>
 
-<body class="loading" data-layout-config='{"darkMode":false}'>
+<body data-layout-config='{"darkMode":false}'>
 
 <!-- NAVBAR START -->
 <nav class="navbar navbar-expand-lg py-lg-3 navbar-dark">
