@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 //});
 
 Route::get('/', function () {
-    return view('landing');
+    return view('layout.landing');
 });
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'processLogin'])->name('process_login');

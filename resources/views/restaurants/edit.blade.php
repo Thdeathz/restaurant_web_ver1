@@ -15,7 +15,6 @@
             </div>
         </div>
         <!-- end page title -->
-        @include('alert')
         <div class="row">
             <div class="col-12">
                 <div class="card">
