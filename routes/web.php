@@ -10,9 +10,7 @@ use Illuminate\Support\Facades\Route;
 //    return view('landing');
 //});
 
-Route::get('/', function () {
-    return view('layout.landing');
-});
+
 Route::get('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/login', [AuthController::class, 'processLogin'])->name('process_login');
 Route::get('/signup', [AuthController::class, 'signup'])->name('signup');
@@ -20,6 +18,9 @@ Route::post('/signup', [AuthController::class, 'processSignup'])->name('process_
 Route::group([
     'middleware' => CheckLoginMiddleware::class
 ], function () {
+    Route::get('/', function () {
+        return view('layout.landing');
+    });
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::group(['prefix' => 'restaurants', 'as' => 'restaurants.'], function() {
         Route::get('/', [RestaurantController::class, 'index'])->name('index');
