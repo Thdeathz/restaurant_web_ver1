@@ -53,8 +53,7 @@ class AuthController extends Controller
         {
             return redirect()->back()->with('toast_error', 'Mật khẩu không trùng khớp !!!');
         }
-
-        //User::create($request->validated());
+        User::create($request->validated());
 
         return redirect()->route('login');
     }
