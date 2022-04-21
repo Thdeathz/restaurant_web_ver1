@@ -53,10 +53,10 @@ class RestaurantController extends Controller
 
         if(session('tasks_url'))
         {
-            return redirect(session('tasks_url'));
+            return redirect(session('tasks_url'))->with('toast_success', 'Thêm thành công !!!');
         }
 
-        return redirect()->route('restaurants.index');
+        return redirect()->route('restaurants.index')->with('toast_success', 'Thêm thành công !!!');
     }
 
 
@@ -104,10 +104,10 @@ class RestaurantController extends Controller
 
         if(session('tasks_url'))
         {
-            return redirect(session('tasks_url'));
+            return redirect(session('tasks_url'))->with('toast_info', 'Sửa thành công');
         }
 
-        return redirect()->route('restaurants.index');
+        return redirect()->route('restaurants.index')->with('toast_info', 'Sửa thành công');
     }
 
 
@@ -121,6 +121,6 @@ class RestaurantController extends Controller
         }
         $restaurant->delete();
 
-        return redirect()->back();
+        return redirect()->back()->with('toast_warning', 'Xóa thành công !!!');
     }
 }
