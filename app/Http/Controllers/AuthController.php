@@ -55,6 +55,6 @@ class AuthController extends Controller
         }
         User::create($request->validated());
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('toast_success', 'Tạo tài khoản thành công !!!');
     }
 }
